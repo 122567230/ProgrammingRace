@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.coding.sales.coupon.DiscountBase;
+import com.coding.sales.coupon.ReductionBase;
 import com.coding.sales.coupon.action.IDiscount;
 import com.coding.sales.coupon.action.IReduction;
 
@@ -130,5 +132,5 @@ public class MetalProduct {
     public void setAllowsReductionTickets(List<String> allowsReductionTickets) {
         this.allowsReductionTickets = allowsReductionTickets;
     }
-    
+   
 }

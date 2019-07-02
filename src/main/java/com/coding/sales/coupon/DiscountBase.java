@@ -11,12 +11,13 @@ import com.coding.sales.metal.MetalProduct;
  */
 public abstract class DiscountBase implements IDiscount{
     private String cardname ;
-    
+    private BigDecimal preferentialAmount;
     public abstract BigDecimal coupon(MetalProduct metalProduct, int metalProductNum);
     public BigDecimal execuCoupon(MetalProduct metalProduct, int metalProductNum) {
         checkCouponQualification(metalProduct);
         metalProduct.setUsedDiscountTickets(this);
-        return coupon(metalProduct,metalProductNum);
+        preferentialAmount = coupon(metalProduct,metalProductNum);
+        return preferentialAmount;
     }
     private void checkCouponQualification(MetalProduct metalProduct) {
         for(String couponCardName:metalProduct.getAllowsDiscountTickets()) {
@@ -31,4 +32,11 @@ public abstract class DiscountBase implements IDiscount{
     public void setCardname(String cardname) {
         this.cardname = cardname;
     }
+    public BigDecimal getPreferentialAmount() {
+        return preferentialAmount;
+    }
+    public void setPreferentialAmount(BigDecimal preferentialAmount) {
+        this.preferentialAmount = preferentialAmount;
+    }
+    
 }

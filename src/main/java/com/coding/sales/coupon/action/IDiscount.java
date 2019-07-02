@@ -10,4 +10,5 @@ import com.coding.sales.metal.MetalProduct;
  */
 public interface IDiscount {
     public BigDecimal execuCoupon(MetalProduct metalProduct, int metalProductNum) ;
+    public BigDecimal getPreferentialAmount();
 }

@@ -69,6 +69,14 @@ public class OrderApp {
             //进行满减卷处理
             ReductionTicketHandle.handelPrivilege(metalProduct, itemCommand.getAmount().intValue());
             
+            //当前产品使用的打折卷和满减卷只能使用一个
+            if(metalProduct.getUsedDiscountTickets() != null && metalProduct.getUsedReductionTickets() != null) {
+                BigDecimal discountPreferentialAmount = metalProduct.getUsedDiscountTickets().getPreferentialAmount();
+                BigDecimal reductionPreferentialAmount = metalProduct.getUsedReductionTickets().getPreferentialAmount();
+                if(discountPreferentialAmount.compareTo(reductionPreferentialAmount) >= 0) {
+                    metalProduct.setUsedReductionTickets(null);
+                }
+            }
             
             
         }
