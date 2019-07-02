@@ -1,4 +1,4 @@
-package com.coding.sales.Utils;
+package com.coding.sales.utils;
 
 public class ConstantDict {
 

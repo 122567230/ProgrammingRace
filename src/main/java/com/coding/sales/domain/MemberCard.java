@@ -1,7 +1,7 @@
  package com.coding.sales.domain;
 
-import com.coding.sales.Utils.ConstantDict;
 import com.coding.sales.domain.action.IMemberCard;
+import com.coding.sales.utils.ConstantDict;
 
 /**
  * @author hy
