@@ -12,9 +12,12 @@ public class MemberCard implements IMemberCard{
     private int point;
     private MemberLevel oldMemberLevel;
     private MemberLevel memberLevel;
-        
-    public MemberCard(int point) {
+    private String memberCardNo;
+    
+	
+	public MemberCard(String memberCardNo,int point,int oldPoint) {
         this.point = point;
+        this.oldPoint=oldPoint;
         this.memberLevel = this.electMemberLevel(point);
     }
     
@@ -42,6 +45,13 @@ public class MemberCard implements IMemberCard{
     public void setMemberLevel(MemberLevel memberLevel) {
         this.memberLevel = memberLevel;
     }
+    public String getMemberCardNo() {
+		return memberCardNo;
+	}
+
+	public void setMemberCardNo(String memberCardNo) {
+		this.memberCardNo = memberCardNo;
+	}
     @Override
     public void increasePoint(int point) {
          this.oldPoint = this.point;
