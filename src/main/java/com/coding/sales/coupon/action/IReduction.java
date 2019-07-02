@@ -11,4 +11,5 @@ import com.coding.sales.metal.MetalProduct;
 public interface IReduction {
     public BigDecimal execuCoupon(MetalProduct metalProduct, int metalProductNum) ;
     public BigDecimal getPreferentialAmount();
+    public String getCardname();
 }

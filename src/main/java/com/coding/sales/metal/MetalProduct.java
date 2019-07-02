@@ -45,22 +45,22 @@ public class MetalProduct {
         
         product = new MetalProduct(P003002,"水晶之恋","条",new BigDecimal("980.00"),
         		new ArrayList<String>(),
-        		new ArrayList<String>(Arrays.asList(new String[]{"REDUCTION_FOUL_FREE_TICKET","REDUCTION_THIRD_HALF_TICKET"})));
+        		new ArrayList<String>(Arrays.asList(new String[]{"满3送1","第3件半价"})));
         metalProducts.put(P003002, product);
         
         product = new MetalProduct(P002002,"中国经典钱币套装","套",new BigDecimal("998.00"),
         		new ArrayList<String>(),
-        		new ArrayList<String>(Arrays.asList(new String[]{"REDUCTION_FULL_1000_MINUS_10_TICKET","REDUCTION_FULL_2000_MINUS_30_TICKET"})));
+        		new ArrayList<String>(Arrays.asList(new String[]{"每满1000元减10","每满2000元减30"})));
         metalProducts.put(P002002, product);
         
         product = new MetalProduct(P002001,"守扩之羽比翼双飞4.8g","条",new BigDecimal("1080.00"),
         		new ArrayList<String>(),
-        		new ArrayList<String>(Arrays.asList(new String[]{"REDUCTION_FOUL_FREE_TICKET","REDUCTION_THIRD_HALF_TICKET"})));
+        		new ArrayList<String>(Arrays.asList(new String[]{"满3送1","第3件半价"})));
         metalProducts.put(P002001, product);
         
         product = new MetalProduct(P002003,"中国银象棋12g","套",new BigDecimal("698.00"),
         		new ArrayList<String>(),
-        		new ArrayList<String>(Arrays.asList(new String[]{"REDUCTION_FULL_1000_MINUS_10_TICKET","REDUCTION_FULL_2000_MINUS_30_TICKET","REDUCTION_FULL_3000_MINUS_350_TICKET"})));
+        		new ArrayList<String>(Arrays.asList(new String[]{"每满1000元减10","每满2000元减30","每满3000元减350"})));
         metalProducts.put(P002003, product);
     }
     

@@ -11,7 +11,7 @@ import com.coding.sales.domain.action.IMemberCard;
  */
 public class Member {
     private String name;
-    private IMemberCard memberCard; 
+    private MemberCard memberCard; 
     
     public static Map<String,Member> members = new HashMap<String,Member>();
     
@@ -36,7 +36,7 @@ public class Member {
 
     
     
-    public Member(String name,IMemberCard memberCard) {
+    public Member(String name,MemberCard memberCard) {
 		this.name=name;
 		this.memberCard=memberCard;
 	}
@@ -47,11 +47,12 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-    public IMemberCard getMemberCard() {
+    public MemberCard getMemberCard() {
         return memberCard;
     }
-    public void setMemberCard(IMemberCard memberCard) {
+    public void setMemberCard(MemberCard memberCard) {
         this.memberCard = memberCard;
     }
+    
     
 }

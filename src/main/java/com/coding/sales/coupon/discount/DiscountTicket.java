@@ -19,11 +19,15 @@ public class DiscountTicket extends DiscountBase implements IDiscount{
     private BigDecimal ratio;
     public static Map<String,IDiscount> discountTickets = new HashMap<String,IDiscount>();
     static {
-        discountTickets.put(NINE_FOLDS_TICKET, new DiscountTicket());
-        discountTickets.put(NINETY_FIVE_FOLDS_TICKET, new DiscountTicket());
+        discountTickets.put(NINE_FOLDS_TICKET, new DiscountTicket(NINE_FOLDS_TICKET,new BigDecimal("0.90")));
+        discountTickets.put(NINETY_FIVE_FOLDS_TICKET, new DiscountTicket(NINETY_FIVE_FOLDS_TICKET,new BigDecimal("0.95")));
     }
     public DiscountTicket() {
         
+    }
+    public DiscountTicket(String cardname,BigDecimal ratio) {
+        this.ratio = ratio;
+        super.setCardname(cardname);
     }
     @Override
     public BigDecimal coupon(MetalProduct metalProduct, int metalProductNum) {
