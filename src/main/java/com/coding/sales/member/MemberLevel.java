@@ -1,4 +1,4 @@
- package com.coding.sales.domain;
+ package com.coding.sales.member;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

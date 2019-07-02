@@ -1,4 +1,4 @@
- package com.coding.sales.domain.action;
+ package com.coding.sales.member.action;
 
  /**
  * @author hy

@@ -1,4 +1,4 @@
- package com.coding.sales.coupon.Reduction;
+ package com.coding.sales.coupon.reduction;
 
 import java.math.BigDecimal;
 
@@ -10,13 +10,13 @@ import com.coding.sales.metal.MetalProduct;
  * @author hy
  * @date 2019/07/02
  */
-public class Reduction_Third_Half_Ticket extends ReductionBase implements IReduction {
+public class ReductionFullTwoThousandMinusThirtyTicket extends ReductionBase implements IReduction {
 
     @Override
     public BigDecimal coupon(MetalProduct metalProduct, int metalProductNum) {
-        if(metalProductNum >= 3) {
-            BigDecimal radio = new BigDecimal("0.5");
-            return metalProduct.getUnit().getPrice().multiply(radio).setScale(2, BigDecimal.ROUND_HALF_DOWN);
+        BigDecimal totalPrice = metalProduct.getUnit().getPrice().multiply(new BigDecimal(metalProductNum));
+        if(totalPrice.compareTo(new BigDecimal("2000")) >= 0) {
+            return new BigDecimal("30");
         }
         return new BigDecimal("0");
         

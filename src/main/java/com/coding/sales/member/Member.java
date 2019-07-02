@@ -1,9 +1,9 @@
- package com.coding.sales.domain;
+ package com.coding.sales.member;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.coding.sales.domain.action.IMemberCard;
+import com.coding.sales.member.action.IMemberCard;
 
 /**
  * @author hy

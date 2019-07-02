@@ -1,4 +1,4 @@
-package com.coding.sales.coupon.Reduction;
+package com.coding.sales.coupon.reduction;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,11 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
+import com.coding.sales.coupon.reduction.ReductionFoulFreeTicket;
+import com.coding.sales.coupon.reduction.ReductionFullOneThousandMinusTenTicket;
+import com.coding.sales.coupon.reduction.ReductionFullThreeThousandMinusThreeHundredFiftyTicket;
+import com.coding.sales.coupon.reduction.ReductionFullTwoThousandMinusThirtyTicket;
+import com.coding.sales.coupon.reduction.Reduction_Third_Half_Ticket;
 import com.coding.sales.metal.MetalProduct;
 
 public class ReductionTicketTest {

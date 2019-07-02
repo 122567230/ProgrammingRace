@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.coding.sales.coupon.Reduction.ReductionFoulFreeTicket;
-import com.coding.sales.coupon.Reduction.ReductionFullOneThousandMinusTenTicket;
-import com.coding.sales.coupon.Reduction.ReductionFullTwoThousandMinusThirtyTicket;
-import com.coding.sales.coupon.Reduction.ReductionFullThreeThousandMinusThreeHundredFiftyTicket;
-import com.coding.sales.coupon.Reduction.Reduction_Third_Half_Ticket;
 import com.coding.sales.coupon.action.IReduction;
+import com.coding.sales.coupon.reduction.ReductionFoulFreeTicket;
+import com.coding.sales.coupon.reduction.ReductionFullOneThousandMinusTenTicket;
+import com.coding.sales.coupon.reduction.ReductionFullThreeThousandMinusThreeHundredFiftyTicket;
+import com.coding.sales.coupon.reduction.ReductionFullTwoThousandMinusThirtyTicket;
+import com.coding.sales.coupon.reduction.Reduction_Third_Half_Ticket;
 import com.coding.sales.metal.MetalProduct;
 
 /**

@@ -1,4 +1,4 @@
-package com.coding.sales.domain;
+package com.coding.sales.member;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -6,6 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import java.math.BigDecimal;
 
 import org.junit.Test;
+
+import com.coding.sales.member.MemberCard;
+import com.coding.sales.member.MemberLevel;
 
 
 

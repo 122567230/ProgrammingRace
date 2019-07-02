@@ -1,6 +1,6 @@
- package com.coding.sales.domain;
+ package com.coding.sales.member;
 
-import com.coding.sales.domain.action.IMemberCard;
+import com.coding.sales.member.action.IMemberCard;
 import com.coding.sales.utils.ConstantDict;
 
 /**

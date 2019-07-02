@@ -1,4 +1,4 @@
- package com.coding.sales.coupon.Reduction;
+ package com.coding.sales.coupon.reduction;
 
 import java.math.BigDecimal;
 
