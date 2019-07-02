@@ -11,19 +11,23 @@ import java.util.Map;
  */
 public class MemberLevel {
 	
-	private static final String WHITE_GOLD_LEVEL = "3";
 	private static final String GOLD_LEVEL = "2";
 	private static final String COMMON_LEVEL = "1";
+	private static final String WHITE_GOLD_LEVEL = "3";
     private static final String DIAMOND_LEVEL = "4";
 
+	private static final String COMMON_RATIO = "1.0";
+	private static final String GOLD_RATIO = "1.5";
+	private static final String WHITE_GOLD_RATIO = "1.8";
+    private static final String DIAMOND_RATIO = "2.0";
 	
 	public static Map<String,MemberLevel> memberLevelStore ;
     static{
         memberLevelStore = new HashMap<String,MemberLevel>();
-        memberLevelStore.put(COMMON_LEVEL, new MemberLevel(COMMON_LEVEL,"普卡",new BigDecimal("1.0")));
-        memberLevelStore.put(GOLD_LEVEL, new MemberLevel(GOLD_LEVEL,"金卡",new BigDecimal("1.5")));
-        memberLevelStore.put(WHITE_GOLD_LEVEL, new MemberLevel(WHITE_GOLD_LEVEL,"白金卡",new BigDecimal("1.8")));
-        memberLevelStore.put(DIAMOND_LEVEL, new MemberLevel(DIAMOND_LEVEL,"钻石卡",new BigDecimal("2.0")));
+        memberLevelStore.put(COMMON_LEVEL, new MemberLevel(COMMON_LEVEL,"普卡",new BigDecimal(COMMON_RATIO)));
+        memberLevelStore.put(GOLD_LEVEL, new MemberLevel(GOLD_LEVEL,"金卡",new BigDecimal(GOLD_RATIO)));
+        memberLevelStore.put(WHITE_GOLD_LEVEL, new MemberLevel(WHITE_GOLD_LEVEL,"白金卡",new BigDecimal(WHITE_GOLD_RATIO)));
+        memberLevelStore.put(DIAMOND_LEVEL, new MemberLevel(DIAMOND_LEVEL,"钻石卡",new BigDecimal(DIAMOND_RATIO)));
     }
     String level ;
     String levelName;
