@@ -13,10 +13,10 @@ public class MemberLevel {
     public static Map<String,MemberLevel> memberLevelStore ;
     {
         memberLevelStore = new HashMap<String,MemberLevel>();
-        memberLevelStore.put("10000", new MemberLevel("1","普卡",new BigDecimal("1")));
-        memberLevelStore.put("50000", new MemberLevel("2","金卡",new BigDecimal("1.5")));
-        memberLevelStore.put("100000", new MemberLevel("3","白金卡",new BigDecimal("1.8")));
-        memberLevelStore.put("-1", new MemberLevel("4","钻石卡",new BigDecimal("2")));
+        memberLevelStore.put("1", new MemberLevel("1","普卡",new BigDecimal("1")));
+        memberLevelStore.put("2", new MemberLevel("2","金卡",new BigDecimal("1.5")));
+        memberLevelStore.put("3", new MemberLevel("3","白金卡",new BigDecimal("1.8")));
+        memberLevelStore.put("4", new MemberLevel("4","钻石卡",new BigDecimal("2")));
     }
     String level ;
     String levelName;
