@@ -54,7 +54,7 @@ public class MemberCard implements IMemberCard{
             return MemberLevel.memberLevelStore.get("1");
         }else if(10000 >= point && point < 50000){
             return MemberLevel.memberLevelStore.get("2");
-        }else if(10000 >= point && point < 100000){
+        }else if(50000 >= point && point < 100000){
             return MemberLevel.memberLevelStore.get("3");
         }else if(100000 >= point){
             return MemberLevel.memberLevelStore.get("4");
