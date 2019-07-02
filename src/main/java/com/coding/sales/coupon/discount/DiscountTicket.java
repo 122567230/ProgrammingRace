@@ -32,7 +32,7 @@ public class DiscountTicket extends DiscountBase implements IDiscount{
     @Override
     public BigDecimal coupon(MetalProduct metalProduct, int metalProductNum) {
         BigDecimal totalPrice = metalProduct.getUnit().getPrice().multiply(new BigDecimal(metalProductNum));
-        return totalPrice.multiply(this.ratio).setScale(2, BigDecimal.ROUND_HALF_DOWN);
+        return totalPrice.subtract(totalPrice.multiply(this.ratio).setScale(2, BigDecimal.ROUND_HALF_DOWN));
     }
 
 }

@@ -58,7 +58,7 @@ public class OrderApp {
         BigDecimal receivables = BigDecimal.ZERO;
         //优惠合计
         BigDecimal totalDiscountPrice = BigDecimal.ZERO;
-        BigDecimal preferentialAmount ;
+        BigDecimal preferentialAmount = BigDecimal.ZERO;
         MetalProduct metalProduct;
         OrderItemRepresentation orderItemRepresentation;
         Member member = Member.members.get(command.getMemberId());
@@ -82,7 +82,6 @@ public class OrderApp {
             
             //进行满减卷处理
             ReductionTicketHandle.handelPrivilege(metalProduct, itemCommand.getAmount().intValue());
-            
             //当前产品使用的打折卷和满减卷只能使用一个
             if(metalProduct.getUsedDiscountTickets() != null || metalProduct.getUsedReductionTickets() != null) {
                 String discountStr = "";
@@ -97,7 +96,6 @@ public class OrderApp {
                         preferentialAmount = discountPreferentialAmount;
                     }else {
                         preferentialAmount = reductionPreferentialAmount;
-                        discountStr = metalProduct.getUsedReductionTickets().getCardname();
                     }
                 }else{
                     if(metalProduct.getUsedDiscountTickets() != null) {
@@ -105,24 +103,25 @@ public class OrderApp {
                         discountStr = metalProduct.getUsedDiscountTickets().getCardname();
                     }else {
                         preferentialAmount = metalProduct.getUsedReductionTickets().getPreferentialAmount();
-                        discountStr = metalProduct.getUsedReductionTickets().getCardname();
                     }
                 }
-                discountCards.add(discountStr);
-                totalDiscountPrice.add(preferentialAmount);
+                if(!"".equals(discountStr)) {
+                    discountCards.add(discountStr);
+                }
+                totalDiscountPrice = totalDiscountPrice.add(preferentialAmount);
                 discountItemRepresentation = new DiscountItemRepresentation(metalProduct.getProductNo(), metalProduct.getProductName(),preferentialAmount);
                 discountItemRepresentations.add(discountItemRepresentation);
             }
+            
             
             //订单信息
             orderItemRepresentation = new OrderItemRepresentation(metalProduct.getProductNo(), metalProduct.getProductName(),
                 metalUnit.getPrice(), itemCommand.getAmount(), metalTotalAmount);
             orderItemRepresentationList.add(orderItemRepresentation);
         }
+        receivables = totalPrice.subtract(totalDiscountPrice);
         //处理会员信息
         member.getMemberCard().increasePoint(receivables.setScale(0, BigDecimal.ROUND_HALF_DOWN).intValue());
-        //TODO: 请完成需求指定的功能
-        receivables = totalPrice.subtract(totalDiscountPrice);
         SimpleDateFormat dateFromate = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
         List<PaymentRepresentation> payments = new ArrayList<PaymentRepresentation>();
         PaymentRepresentation paymentRepresentation = null;

@@ -63,11 +63,11 @@ public class MemberCard implements IMemberCard{
     public MemberLevel electMemberLevel(int point) {
         if(point < 10000) {
             return MemberLevel.memberLevelStore.get(ConstantDict.COMMON_LEVEL);
-        }else if(10000 >= point && point < 50000){
+        }else if(10000 <= point && point < 50000){
             return MemberLevel.memberLevelStore.get(ConstantDict.GOLD_LEVEL);
-        }else if(50000 >= point && point < 100000){
+        }else if(50000 <= point && point < 100000){
             return MemberLevel.memberLevelStore.get(ConstantDict.WHITE_GOLD_LEVEL);
-        }else if(100000 >= point){
+        }else if(100000 <= point){
             return MemberLevel.memberLevelStore.get(ConstantDict.DIAMOND_LEVEL);
         }
         
