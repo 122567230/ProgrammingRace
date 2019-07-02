@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class MemberLevel {
     public static Map<String,MemberLevel> memberLevelStore ;
-    {
+    static{
         memberLevelStore = new HashMap<String,MemberLevel>();
         memberLevelStore.put("1", new MemberLevel("1","普卡",new BigDecimal("1")));
         memberLevelStore.put("2", new MemberLevel("2","金卡",new BigDecimal("1.5")));
@@ -22,11 +22,19 @@ public class MemberLevel {
     String levelName;
     BigDecimal ratio;
     
+    public MemberLevel() {};
+    
     public MemberLevel(String level,String levelName,BigDecimal ratio) {
         this.level = level;
         this.levelName = levelName;
         this.ratio = ratio;
     }
-    
+    public MemberLevel(String level) {
+        MemberLevel memberLevel = new MemberLevel();
+        memberLevel = memberLevelStore.get(level);
+        this.level = memberLevel.level;
+        this.levelName = memberLevel.levelName;
+        this.ratio = memberLevel.ratio;
+    }
     
 }

@@ -11,6 +11,12 @@ public class MemberCard implements IMemberCard{
     private int point;
     private MemberLevel oldMemberLevel;
     private MemberLevel memberLevel;
+    
+    public MemberCard(int point) {
+        this.point = point;
+        this.memberLevel = this.electMemberLevel(point);
+    }
+    
     public int getOldPoint() {
         return oldPoint;
     }
@@ -56,5 +62,4 @@ public class MemberCard implements IMemberCard{
         
         return memberLevel;
     }
-    
 }
