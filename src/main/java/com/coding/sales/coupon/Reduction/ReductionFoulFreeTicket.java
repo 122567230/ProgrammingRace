@@ -10,16 +10,14 @@ import com.coding.sales.metal.MetalProduct;
  * @author hy
  * @date 2019/07/02
  */
-public class Reduction_Full_3000_Minus_350_Ticket extends ReductionBase implements IReduction {
+public class ReductionFoulFreeTicket extends ReductionBase implements IReduction {
 
     @Override
     public BigDecimal coupon(MetalProduct metalProduct, int metalProductNum) {
-        BigDecimal totalPrice = metalProduct.getUnit().getPrice().multiply(new BigDecimal(metalProductNum));
-        if(totalPrice.compareTo(new BigDecimal("3000")) >= 0) {
-            return new BigDecimal("350");
+        if(metalProductNum >= 4) {
+            return metalProduct.getUnit().getPrice();
         }
         return new BigDecimal("0");
-        
     }
 
 }
