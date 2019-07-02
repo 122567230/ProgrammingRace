@@ -9,6 +9,10 @@ import java.math.BigDecimal;
 public class MetalUnit {
     private String unit;
     private BigDecimal price;
+    public MetalUnit(String unit,BigDecimal price) {
+        this.unit = unit;
+        this.price = price;
+    }
     public String getUnit() {
         return unit;
     }
