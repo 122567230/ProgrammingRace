@@ -1,0 +1,25 @@
+ package com.coding.sales.metal;
+
+import java.math.BigDecimal;
+
+/**
+ * @author hy
+ * @date 2019/07/02
+ */
+public class MetalUnit {
+    private String unit;
+    private BigDecimal price;
+    public String getUnit() {
+        return unit;
+    }
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+    public BigDecimal getPrice() {
+        return price;
+    }
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+    
+}
