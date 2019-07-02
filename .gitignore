@@ -24,13 +24,14 @@
 *.iml
 *.ipr
 /target/
+/target/*
 /out/
 
 # Eclipse Project files
 .classpath
 .project
 .settings/
-  
+.settings*  
 bin/
 .DS_Store
 Thumbs.db
