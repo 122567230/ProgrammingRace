@@ -10,13 +10,20 @@ import java.util.Map;
  * @date 2019/07/02
  */
 public class MemberLevel {
-    public static Map<String,MemberLevel> memberLevelStore ;
+	
+	private static final String WHITE_GOLD_LEVEL = "3";
+	private static final String GOLD_LEVEL = "2";
+	private static final String COMMON_LEVEL = "1";
+    private static final String DIAMOND_LEVEL = "4";
+
+	
+	public static Map<String,MemberLevel> memberLevelStore ;
     static{
         memberLevelStore = new HashMap<String,MemberLevel>();
-        memberLevelStore.put("1", new MemberLevel("1","普卡",new BigDecimal("1")));
-        memberLevelStore.put("2", new MemberLevel("2","金卡",new BigDecimal("1.5")));
-        memberLevelStore.put("3", new MemberLevel("3","白金卡",new BigDecimal("1.8")));
-        memberLevelStore.put("4", new MemberLevel("4","钻石卡",new BigDecimal("2")));
+        memberLevelStore.put(COMMON_LEVEL, new MemberLevel(COMMON_LEVEL,"普卡",new BigDecimal("1.0")));
+        memberLevelStore.put(GOLD_LEVEL, new MemberLevel(GOLD_LEVEL,"金卡",new BigDecimal("1.5")));
+        memberLevelStore.put(WHITE_GOLD_LEVEL, new MemberLevel(WHITE_GOLD_LEVEL,"白金卡",new BigDecimal("1.8")));
+        memberLevelStore.put(DIAMOND_LEVEL, new MemberLevel(DIAMOND_LEVEL,"钻石卡",new BigDecimal("2.0")));
     }
     String level ;
     String levelName;

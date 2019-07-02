@@ -18,7 +18,7 @@ public class MemberCardTest {
 		
 		MemberLevel memberLevel = memberCard.electMemberLevel(9999);
 		
-		MemberLevel memberLevelCommon = new MemberLevel("1", "普卡", new BigDecimal("1"));
+		MemberLevel memberLevelCommon = new MemberLevel("1", "普卡", new BigDecimal("1.0"));
 	    assertEquals(memberLevelCommon.level, memberLevel.level);
 	    assertEquals(memberLevelCommon.levelName, memberLevel.levelName);
 	    assertEquals(memberLevelCommon.ratio, memberLevel.ratio);
@@ -59,7 +59,7 @@ public class MemberCardTest {
 		
 		MemberLevel memberLevel = memberCard.electMemberLevel(100000);
 		
-		MemberLevel memberLevelCommon = new MemberLevel("4", "钻石卡", new BigDecimal("2"));
+		MemberLevel memberLevelCommon = new MemberLevel("4", "钻石卡", new BigDecimal("2.0"));
 	    assertEquals(memberLevelCommon.level, memberLevel.level);
 	    assertEquals(memberLevelCommon.levelName, memberLevel.levelName);
 	    assertEquals(memberLevelCommon.ratio, memberLevel.ratio);
