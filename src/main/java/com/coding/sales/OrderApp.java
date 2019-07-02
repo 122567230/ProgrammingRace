@@ -58,12 +58,10 @@ public class OrderApp {
         BigDecimal receivables = BigDecimal.ZERO;
         //优惠合计
         BigDecimal totalDiscountPrice = BigDecimal.ZERO;
-        BigDecimal preferentialAmount = BigDecimal.ZERO;
         MetalProduct metalProduct;
         OrderItemRepresentation orderItemRepresentation;
         Member member = Member.members.get(command.getMemberId());
         List<OrderItemRepresentation> orderItemRepresentationList = new ArrayList<OrderItemRepresentation>();
-        DiscountItemRepresentation discountItemRepresentation;
         List<DiscountItemRepresentation> discountItemRepresentations = new ArrayList<DiscountItemRepresentation>(); 
         List<String> discountCards = new ArrayList<String>();
         for(OrderItemCommand itemCommand:command.getItems()) {
@@ -71,50 +69,12 @@ public class OrderApp {
             MetalUnit metalUnit = metalProduct.getUnit();
             BigDecimal metalTotalAmount = metalUnit.getPrice().multiply(itemCommand.getAmount());
             totalPrice = totalPrice.add(metalTotalAmount);
-            //进行打折卷处理
-            for(String discountStr:discounts) {
-                if(metalProduct.getAllowsDiscountTickets().contains(discountStr)) {
-                    IDiscount discount = DiscountTicket.discountTickets.get(discountStr);
-                    discount.execuCoupon(metalProduct, itemCommand.getAmount().intValue());
-                    break;
-                }
+            handleDiscount(metalProduct,itemCommand,discounts);
+            handleReduction(metalProduct, itemCommand);
+            if(isHasPreferential(metalProduct)) {
+                totalDiscountPrice = preferentialActivities(totalDiscountPrice, metalProduct,
+                    discountItemRepresentations, discountCards);
             }
-            
-            //进行满减卷处理
-            ReductionTicketHandle.handelPrivilege(metalProduct, itemCommand.getAmount().intValue());
-            //当前产品使用的打折卷和满减卷只能使用一个
-            if(metalProduct.getUsedDiscountTickets() != null || metalProduct.getUsedReductionTickets() != null) {
-                String discountStr = "";
-                BigDecimal discountPreferentialAmount;
-                BigDecimal reductionPreferentialAmount;
-                if(metalProduct.getUsedDiscountTickets() != null && metalProduct.getUsedReductionTickets() != null) {
-                    discountPreferentialAmount = metalProduct.getUsedDiscountTickets().getPreferentialAmount();
-                    reductionPreferentialAmount = metalProduct.getUsedReductionTickets().getPreferentialAmount();
-                    if(discountPreferentialAmount.compareTo(reductionPreferentialAmount) >= 0) {
-                        metalProduct.setUsedReductionTickets(null);
-                        discountStr = metalProduct.getUsedDiscountTickets().getCardname();
-                        preferentialAmount = discountPreferentialAmount;
-                    }else {
-                        preferentialAmount = reductionPreferentialAmount;
-                    }
-                }else{
-                    if(metalProduct.getUsedDiscountTickets() != null) {
-                        preferentialAmount = metalProduct.getUsedDiscountTickets().getPreferentialAmount();
-                        discountStr = metalProduct.getUsedDiscountTickets().getCardname();
-                    }else {
-                        preferentialAmount = metalProduct.getUsedReductionTickets().getPreferentialAmount();
-                    }
-                }
-                if(!"".equals(discountStr)) {
-                    discountCards.add(discountStr);
-                }
-                totalDiscountPrice = totalDiscountPrice.add(preferentialAmount);
-                discountItemRepresentation = new DiscountItemRepresentation(metalProduct.getProductNo(), metalProduct.getProductName(),preferentialAmount);
-                discountItemRepresentations.add(discountItemRepresentation);
-            }
-            
-            
-            //订单信息
             orderItemRepresentation = new OrderItemRepresentation(metalProduct.getProductNo(), metalProduct.getProductName(),
                 metalUnit.getPrice(), itemCommand.getAmount(), metalTotalAmount);
             orderItemRepresentationList.add(orderItemRepresentation);
@@ -151,5 +111,57 @@ public class OrderApp {
             payments,
             discountCards);
         return result;
+    }
+
+    private boolean isHasPreferential(MetalProduct metalProduct) {
+        return metalProduct.getUsedDiscountTickets() != null || metalProduct.getUsedReductionTickets() != null;
+    }
+
+    private BigDecimal preferentialActivities(BigDecimal totalDiscountPrice, MetalProduct metalProduct,
+        List<DiscountItemRepresentation> discountItemRepresentations, List<String> discountCards) {
+        String discountStr = "";
+        DiscountItemRepresentation discountItemRepresentation;
+        BigDecimal preferentialAmount = BigDecimal.ZERO;
+        BigDecimal discountPreferentialAmount;
+        BigDecimal reductionPreferentialAmount;
+        if(metalProduct.getUsedDiscountTickets() != null && metalProduct.getUsedReductionTickets() != null) {
+            discountPreferentialAmount = metalProduct.getUsedDiscountTickets().getPreferentialAmount();
+            reductionPreferentialAmount = metalProduct.getUsedReductionTickets().getPreferentialAmount();
+            if(discountPreferentialAmount.compareTo(reductionPreferentialAmount) >= 0) {
+                metalProduct.setUsedReductionTickets(null);
+                discountStr = metalProduct.getUsedDiscountTickets().getCardname();
+                preferentialAmount = discountPreferentialAmount;
+            }else {
+                preferentialAmount = reductionPreferentialAmount;
+            }
+        }else{
+            if(metalProduct.getUsedDiscountTickets() != null) {
+                preferentialAmount = metalProduct.getUsedDiscountTickets().getPreferentialAmount();
+                discountStr = metalProduct.getUsedDiscountTickets().getCardname();
+            }else {
+                preferentialAmount = metalProduct.getUsedReductionTickets().getPreferentialAmount();
+            }
+        }
+        if(!"".equals(discountStr)) {
+            discountCards.add(discountStr);
+        }
+        totalDiscountPrice = totalDiscountPrice.add(preferentialAmount);
+        discountItemRepresentation = new DiscountItemRepresentation(metalProduct.getProductNo(), metalProduct.getProductName(),preferentialAmount);
+        discountItemRepresentations.add(discountItemRepresentation);
+        return totalDiscountPrice;
+    }
+    
+    private void handleReduction(MetalProduct metalProduct, OrderItemCommand itemCommand) {
+        ReductionTicketHandle.handelPrivilege(metalProduct, itemCommand.getAmount().intValue());
+    }
+
+    public void handleDiscount(MetalProduct metalProduct,OrderItemCommand itemCommand,List<String> discounts) {
+        for(String discountStr:discounts) {
+            if(metalProduct.getAllowsDiscountTickets().contains(discountStr)) {
+                IDiscount discount = DiscountTicket.discountTickets.get(discountStr);
+                discount.execuCoupon(metalProduct, itemCommand.getAmount().intValue());
+                break;
+            }
+        }
     }
 }
