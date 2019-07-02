@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.coding.sales.coupon.action.IDiscount;
+import com.coding.sales.coupon.action.IReduction;
+
 
 
 /**
@@ -65,6 +68,26 @@ public class MetalProduct {
     private List<String> allowsDiscountTickets;
     private List<String> allowsReductionTickets;
     
+    private IDiscount usedDiscountTickets = null;
+    
+    private IReduction usedReductionTickets = null;
+    
+    public IDiscount getUsedDiscountTickets() {
+        return usedDiscountTickets;
+    }
+
+    public void setUsedDiscountTickets(IDiscount usedDiscountTickets) {
+        this.usedDiscountTickets = usedDiscountTickets;
+    }
+
+    public IReduction getUsedReductionTickets() {
+        return usedReductionTickets;
+    }
+
+    public void setUsedReductionTickets(IReduction usedReductionTickets) {
+        this.usedReductionTickets = usedReductionTickets;
+    }
+
     public MetalProduct(String productNo,String productName,String unit,
         BigDecimal price,List<String> allowsDiscountTickets,List<String> allowsReductionTickets) {
         this.productNo = productNo;

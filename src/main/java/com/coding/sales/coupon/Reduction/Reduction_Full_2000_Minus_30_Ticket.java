@@ -2,15 +2,15 @@
 
 import java.math.BigDecimal;
 
-import com.coding.sales.coupon.Coupon;
-import com.coding.sales.coupon.action.ICoupon;
+import com.coding.sales.coupon.ReductionBase;
+import com.coding.sales.coupon.action.IReduction;
 import com.coding.sales.metal.MetalProduct;
 
 /**
  * @author hy
  * @date 2019/07/02
  */
-public class Reduction_Full_2000_Minus_30_Ticket extends Coupon implements ICoupon {
+public class Reduction_Full_2000_Minus_30_Ticket extends ReductionBase implements IReduction {
 
     @Override
     public BigDecimal coupon(MetalProduct metalProduct, int metalProductNum) {

@@ -8,6 +8,6 @@ import com.coding.sales.metal.MetalProduct;
  * @author hy
  * @date 2019/07/02
  */
-public interface ICoupon {
+public interface IReduction {
     public BigDecimal execuCoupon(MetalProduct metalProduct, int metalProductNum) ;
 }
