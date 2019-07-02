@@ -14,7 +14,7 @@ public class MemberCardTest {
 	@Test
 	public void should_return_common_Level_when_member_card_increase_1000_point() {
 		
-		MemberCard memberCard=new MemberCard(0);
+		MemberCard memberCard=new MemberCard("",0,0);
 		
 		MemberLevel memberLevel = memberCard.electMemberLevel(9999);
 		
@@ -28,7 +28,7 @@ public class MemberCardTest {
 	@Test
 	public void should_return_gold_Level_when_member_card_increase_10000_point() {
 		
-		MemberCard memberCard=new MemberCard(0);
+		MemberCard memberCard=new MemberCard("",0,0);
 		
 		MemberLevel memberLevel = memberCard.electMemberLevel(10000);
 		
@@ -42,7 +42,7 @@ public class MemberCardTest {
 	@Test
 	public void should_return_white_gold_Level_when_member_card_increase_50000_point() {
 		
-		MemberCard memberCard=new MemberCard(0);
+		MemberCard memberCard=new MemberCard("",0,0);
 		
 		MemberLevel memberLevel = memberCard.electMemberLevel(50000);
 		
@@ -55,7 +55,7 @@ public class MemberCardTest {
 	@Test
 	public void should_return_diamond_Level_when_member_card_increase_100000_point() {
 		
-		MemberCard memberCard=new MemberCard(0);
+		MemberCard memberCard=new MemberCard("",0,0);
 		
 		MemberLevel memberLevel = memberCard.electMemberLevel(100000);
 		
